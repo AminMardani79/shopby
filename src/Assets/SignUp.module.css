@@ -1,0 +1,77 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #1a73e8;
+}
+.formContainer form {
+  background-color: #fff;
+  padding: 25px 3rem;
+  width: 30%;
+}
+.formHeader {
+  color: #1a73e8;
+  padding: 20px 0;
+  font-size: 32px;
+}
+.inputField {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.inputField label {
+  font-size: 13px;
+  font-weight: 300;
+  color: #5f6368;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  pointer-events: none;
+  transition: all 0.1s ease-in-out;
+}
+.inputField input {
+  margin: 12px 0;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #9f9fa0;
+  color: #202124;
+  height: 38px;
+  width: 100%;
+}
+.inputField input.invalidInput {
+  border: 1px solid #d93025;
+}
+.inputField input.invalidInput:focus {
+  border: 2px solid #d93025;
+}
+.inputField input:focus {
+  outline: none;
+  border: 2px solid #1a73e8;
+}
+.touchedInput {
+  border: 1px solid #1a73e8 !important;
+}
+.inputField input:focus + label {
+  top: 4px;
+  left: 5px;
+  font-size: 11px;
+  background-color: #fff;
+  padding: 2px 4px;
+  color: #1a73e8;
+}
+.inputField input.invalidInput:focus + label {
+  color: #d93025;
+}
+.inputField label.activeLabel {
+  top: 4px;
+  left: 5px;
+  font-size: 11px;
+  background-color: #fff;
+  padding: 2px 4px;
+  color: #1a73e8;
+}
+.inputField input.invalidInput + label.activeLabel {
+  color: #d93025;
+}
