@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../Utils/notify";
 import { validate } from "./validation/signUpValidation";
-import styles from "../Assets/SignUp.module.css";
+import styles from "../Assets/css/SignUp.module.css";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -44,89 +44,123 @@ const SignUp = () => {
   const focusHandler = (event) => {
     setTouch({ ...touch, [event.target.name]: true });
   };
+  const BlurHandler = (event) => {
+    setTouch({ ...touch, [event.target.name]: false });
+  };
   return (
     <div className={styles.formContainer}>
       <form onSubmit={submitHandler}>
         <h1 className={styles.formHeader}>SignUp</h1>
         <div className={styles.inputField}>
           <input
-            className={`${
+            className={`${!touch.name && data.name && styles.touchedInput} ${
               errors.name && errorMessage.name && styles.invalidInput
-            } ${touch.name && data.name && styles.touchedInput}`}
+            }`}
             type="text"
             name="name"
             value={data.name}
             onChange={changeHandler}
             onFocus={focusHandler}
+            onBlur={BlurHandler}
           />
           <label className={data.name && styles.activeLabel}>Name</label>
-          {errors.name && errorMessage.name && <span>{errors.name}</span>}
+          {errors.name && errorMessage.name && (
+            <span>
+              <span className={styles.errorIcon}>!</span>
+              {errors.name}
+            </span>
+          )}
         </div>
         <div className={styles.inputField}>
           <input
-            className={
+            className={`${!touch.email && data.email && styles.touchedInput} ${
               errors.email && errorMessage.email && styles.invalidInput
-            }
+            }`}
             type="text"
             name="email"
             value={data.email}
             onChange={changeHandler}
             onFocus={focusHandler}
+            onBlur={BlurHandler}
           />
           <label className={data.email && styles.activeLabel}>Email</label>
-          {errors.email && errorMessage.email && <span>{errors.email}</span>}
+          {errors.email && errorMessage.email && (
+            <span>
+              <span className={styles.errorIcon}>!</span>
+              {errors.email}
+            </span>
+          )}
         </div>
         <div className={styles.inputField}>
           <input
-            className={
+            className={`${
+              !touch.password && data.password && styles.touchedInput
+            } ${
               errors.password && errorMessage.password && styles.invalidInput
-            }
+            }`}
             type="password"
             name="password"
             value={data.password}
             onChange={changeHandler}
             onFocus={focusHandler}
+            onBlur={BlurHandler}
           />
           <label className={data.password && styles.activeLabel}>
             Password
           </label>
           {errors.password && errorMessage.password && (
-            <span>{errors.password}</span>
+            <span>
+              <span className={styles.errorIcon}>!</span>
+              {errors.password}
+            </span>
           )}
         </div>
         <div className={styles.inputField}>
           <input
-            className={
+            className={`${
+              !touch.confirmPassword &&
+              data.confirmPassword &&
+              styles.touchedInput
+            } ${
               errors.confirmPassword &&
               errorMessage.confirmPassword &&
               styles.invalidInput
-            }
+            } `}
             type="password"
             name="confirmPassword"
             value={data.confirmPassword}
             onChange={changeHandler}
             onFocus={focusHandler}
+            onBlur={BlurHandler}
           />
           <label className={data.confirmPassword && styles.activeLabel}>
             ConfirmPassword
           </label>
           {errors.confirmPassword && errorMessage.confirmPassword && (
-            <span>{errors.confirmPassword}</span>
+            <span>
+              <span className={styles.errorIcon}>!</span>
+              {errors.confirmPassword}
+            </span>
           )}
         </div>
-        <div>
-          <label>I accept terms of privacy policy</label>
-          <input
-            type="checkbox"
-            name="isAccepted"
-            checked={data.isAccepted}
-            onChange={changeHandler}
-          />
+        <div className={styles.checkBoxField}>
+          <div>
+            <label>I accept terms of privacy policy</label>
+            <input
+              type="checkbox"
+              name="isAccepted"
+              checked={data.isAccepted}
+              onChange={changeHandler}
+            />
+          </div>
           {errors.isAccepted && errorMessage.name && (
-            <span>{errors.isAccepted}</span>
+            <span>
+              <span className={styles.errorIcon}>!</span>
+              {errors.isAccepted}
+            </span>
           )}
         </div>
-        <div>
+        <div className={styles.formButtons}>
           <a href="#">Login</a>
           <button type="submit">SignUp</button>
         </div>
