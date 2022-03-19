@@ -156,5 +156,26 @@
   transition: all 0.2s ease-in-out;
 }
 .formButtons button:hover {
-  background-color: var(--main-red);
+  background-color: #dd322f;
+}
+@media (max-width: 1200px) {
+  .formContainer form {
+    width: 45%;
+  }
+  .formHeader {
+    font-size: 30px;
+  }
+}
+@media (max-width: 650px) {
+  .formContainer form {
+    width: 55%;
+  }
+  .formHeader {
+    font-size: 25px;
+  }
+}
+@media (max-width: 500px) {
+  .formContainer form {
+    width: 80%;
+  }
 }

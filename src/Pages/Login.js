@@ -6,13 +6,10 @@ import { validate } from "./validation/validate";
 import styles from "../Assets/css/SignUp.module.css";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
+const Login = () => {
   const [data, setData] = useState({
-    name: "",
     email: "",
     password: "",
-    confirmPassword: "",
-    isAccepted: false,
   });
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState({});
@@ -29,18 +26,15 @@ const SignUp = () => {
     if (Object.values(errors).length) {
       notify("error", "Enter valid data");
       setErrorMessage({
-        name: true,
         email: true,
         password: true,
-        confirmPassword: true,
-        isAccepted: true,
       });
     } else {
-      notify("success", "You are successfuly signed up");
+      notify("success", "You are successfuly logged in");
     }
   };
   useEffect(() => {
-    setErrors(validate(data, "signup"));
+    setErrors(validate(data, "login"));
   }, [data]);
   const focusHandler = (event) => {
     setTouch({ ...touch, [event.target.name]: true });
@@ -51,27 +45,7 @@ const SignUp = () => {
   return (
     <div className={styles.formContainer}>
       <form onSubmit={submitHandler}>
-        <h1 className={styles.formHeader}>SignUp</h1>
-        <div className={styles.inputField}>
-          <input
-            className={`${!touch.name && data.name && styles.touchedInput} ${
-              errors.name && errorMessage.name && styles.invalidInput
-            }`}
-            type="text"
-            name="name"
-            value={data.name}
-            onChange={changeHandler}
-            onFocus={focusHandler}
-            onBlur={BlurHandler}
-          />
-          <label className={data.name && styles.activeLabel}>Name</label>
-          {errors.name && errorMessage.name && (
-            <span>
-              <span className={styles.errorIcon}>!</span>
-              {errors.name}
-            </span>
-          )}
-        </div>
+        <h1 className={styles.formHeader}>Login</h1>
         <div className={styles.inputField}>
           <input
             className={`${!touch.email && data.email && styles.touchedInput} ${
@@ -116,54 +90,9 @@ const SignUp = () => {
             </span>
           )}
         </div>
-        <div className={styles.inputField}>
-          <input
-            className={`${
-              !touch.confirmPassword &&
-              data.confirmPassword &&
-              styles.touchedInput
-            } ${
-              errors.confirmPassword &&
-              errorMessage.confirmPassword &&
-              styles.invalidInput
-            } `}
-            type="password"
-            name="confirmPassword"
-            value={data.confirmPassword}
-            onChange={changeHandler}
-            onFocus={focusHandler}
-            onBlur={BlurHandler}
-          />
-          <label className={data.confirmPassword && styles.activeLabel}>
-            ConfirmPassword
-          </label>
-          {errors.confirmPassword && errorMessage.confirmPassword && (
-            <span>
-              <span className={styles.errorIcon}>!</span>
-              {errors.confirmPassword}
-            </span>
-          )}
-        </div>
-        <div className={styles.checkBoxField}>
-          <div>
-            <label>I accept terms of privacy policy</label>
-            <input
-              type="checkbox"
-              name="isAccepted"
-              checked={data.isAccepted}
-              onChange={changeHandler}
-            />
-          </div>
-          {errors.isAccepted && errorMessage.name && (
-            <span>
-              <span className={styles.errorIcon}>!</span>
-              {errors.isAccepted}
-            </span>
-          )}
-        </div>
         <div className={styles.formButtons}>
-          <Link to="/login">Login</Link>
-          <button type="submit">SignUp</button>
+          <Link to="/signup">SignUp</Link>
+          <button type="submit">Login</button>
         </div>
       </form>
       <ToastContainer />
@@ -171,4 +100,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;
