@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // Styles
 import style from "../../assets/css/Navbar.module.css";
@@ -12,17 +12,29 @@ import {
   HamburgerMenu,
   Hamburger,
   Overlay,
+  ActiveSpan,
 } from "./NavbarElements";
 // image
 import logo from "../../assets/img/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeStyles, setActiveStyles] = useState({
+    width: "36px",
+    left: "0",
+  });
   const OpenMenu = () => {
     setIsOpen(true);
   };
   const CloseMenu = () => {
     setIsOpen(false);
+  };
+  const clickHandler = (e) => {
+    setActiveStyles((prevState) => ({
+      ...prevState,
+      left: `${e.target.offsetLeft}px`,
+      width: `${e.target.offsetWidth}px`,
+    }));
   };
   return (
     <Header>
@@ -33,15 +45,18 @@ const Navbar = () => {
         <NavLink
           to="/home"
           className={(navData) => (navData.isActive ? style.active : "")}
+          onClick={clickHandler}
         >
           Home
         </NavLink>
         <NavLink
           to="/products"
           className={(navData) => (navData.isActive ? style.active : "")}
+          onClick={clickHandler}
         >
           Products
         </NavLink>
+        <ActiveSpan styles={activeStyles}></ActiveSpan>
       </Nav>
       <RightNav className={style.rightNav}>
         <div className={style.shoppingCart}>

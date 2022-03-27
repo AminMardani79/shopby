@@ -94,3 +94,12 @@ export const Overlay = styled.div`
   height: 100%;
   transition: all 0.3s ease-in;
 `;
+export const ActiveSpan = styled.span`
+  position: absolute;
+  left: ${(props) => props.styles.left};
+  bottom: -2px;
+  width: ${(props) => props.styles.width};
+  height: 2px;
+  background-color: var(--main-blue);
+  transition: all 0.1s ease-in-out;
+`;
