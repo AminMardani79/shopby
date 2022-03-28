@@ -5,16 +5,21 @@ import Products from "./Products";
 import Home from "./Home";
 // Components
 import Navbar from "../components/Navbar/Navbar";
+// Styles
+import styles from "../assets/css/Landing.module.css";
 
 const Landing = () => {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path="/products" element={<Products />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Navigate to="/home" />} />
-      </Routes>
+      <main className={styles.container}>
+        <Routes>
+          <Route path="/products" element={<Products />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/*" element={<Navigate to="/home" />} />
+        </Routes>
+      </main>
     </div>
   );
 };

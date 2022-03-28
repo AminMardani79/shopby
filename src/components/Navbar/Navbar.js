@@ -1,5 +1,5 @@
 import React, { createRef, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 // Styles
 import style from "../../assets/css/Navbar.module.css";
 // Styled Components
@@ -18,24 +18,43 @@ import {
 import logo from "../../assets/img/logo.png";
 
 const Navbar = () => {
+  // Variables
   const [isOpen, setIsOpen] = useState(false);
   const [activeStyles, setActiveStyles] = useState({
     width: "36px",
     left: "0",
   });
+  const products = createRef();
+  const home = createRef();
+  const params = useParams();
+
+  // Methods
   const OpenMenu = () => {
     setIsOpen(true);
   };
   const CloseMenu = () => {
     setIsOpen(false);
   };
-  const clickHandler = (e) => {
-    setActiveStyles((prevState) => ({
-      ...prevState,
-      left: `${e.target.offsetLeft}px`,
-      width: `${e.target.offsetWidth}px`,
-    }));
-  };
+  useEffect(() => {
+    switch (params["*"]) {
+      case "home":
+        setActiveStyles((prevState) => ({
+          ...prevState,
+          left: `${home.current.offsetLeft}px`,
+          width: `${home.current.offsetWidth}px`,
+        }));
+        break;
+      case "products":
+        setActiveStyles((prevState) => ({
+          ...prevState,
+          left: `${products.current.offsetLeft}px`,
+          width: `${products.current.offsetWidth}px`,
+        }));
+        break;
+      default:
+        break;
+    }
+  }, [params]);
   return (
     <Header>
       <div className={style.logoContainer}>
@@ -45,14 +64,14 @@ const Navbar = () => {
         <NavLink
           to="/home"
           className={(navData) => (navData.isActive ? style.active : "")}
-          onClick={clickHandler}
+          ref={home}
         >
           Home
         </NavLink>
         <NavLink
           to="/products"
           className={(navData) => (navData.isActive ? style.active : "")}
-          onClick={clickHandler}
+          ref={products}
         >
           Products
         </NavLink>

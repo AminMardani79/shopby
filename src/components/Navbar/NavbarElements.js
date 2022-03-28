@@ -41,7 +41,7 @@ export const HamburgerMenu = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   width: 200px;
   background-color: #fff;
   border-right: 1px solid #c3c3c3;
