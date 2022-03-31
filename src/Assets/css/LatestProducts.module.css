@@ -1,0 +1,12 @@
+@import "./index.css";
+.latestContainer {
+  padding: 60px 0;
+}
+.latestTitle h3 {
+  text-align: center;
+  color: var(--main-black);
+  font-size: 25px;
+}
+.productCarousel {
+  padding: 60px 0;
+}
