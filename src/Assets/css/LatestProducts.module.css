@@ -9,4 +9,7 @@
 }
 .productCarousel {
   padding: 60px 0;
+  width: 82%;
+  height: 400px;
+  margin: auto;
 }
