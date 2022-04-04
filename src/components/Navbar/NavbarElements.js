@@ -52,7 +52,7 @@ export const HamburgerMenu = styled.nav`
   flex-direction: column;
   align-items: center;
   transform: ${(props) =>
-    props.isOpen ? "translateX(0)" : "translateX(-100%)"};
+    props.isOpen ? "translateX(0)" : "translateX(-110%)"};
   z-index: 10;
   .hamburgerlogo-container {
     text-align: center;
