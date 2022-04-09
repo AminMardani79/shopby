@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 // Styles
 import styles from "../assets/css/LatestProducts.module.css";
 // Components
 import Product from "./shared/Product";
 import ProuctCarousel from "./shared/ProuctCarousel";
-// Api
-import { getProducts } from "../services/api";
+// Context
+import { ProductContext } from "../context/ProductsContextProvider";
 const LatestProducts = () => {
-  const [latestProducts, setLatestProducts] = useState([]);
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const products = await getProducts();
-      setLatestProducts(products.slice(0, 7));
-    };
-    fetchProducts();
-  }, []);
+  const products = useContext(ProductContext);
+  const latestProducts = products.slice(0, 7);
   return (
     <div className={styles.latestContainer}>
       <header className={styles.latestTitle}>

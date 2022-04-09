@@ -1,15 +1,50 @@
-import React, { useEffect, useState } from "react";
-import { getProducts } from "../services/api";
+import React, { useContext, useState } from "react";
+// styles
+import styles from "../assets/css/Products.module.css";
+// components
+import Product from "../components/shared/Product";
+import ReactPaginate from "react-paginate";
+// Contexts
+import { ProductContext } from "../context/ProductsContextProvider";
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setProducts(await getProducts());
-    };
-    fetchProducts();
-    console.log(products);
-  }, []);
-  return <div>products</div>;
+  const products = useContext(ProductContext);
+  const [pageNumber, setPageNumber] = useState(0);
+  const productsPerPage = 12;
+  const visitedProducts = pageNumber * productsPerPage;
+  const displayProducts = products
+    .slice(visitedProducts, visitedProducts + productsPerPage)
+    .map((product) => {
+      return (
+        <Product
+          key={product.id}
+          image={product.image}
+          title={product.title}
+          price={product.price}
+        />
+      );
+    });
+  const pageCount = Math.ceil(products.length / productsPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+  return (
+    <div>
+      <div className={styles.productsContainer}>{displayProducts}</div>
+      <div className={styles.paginationContainer}>
+        <ReactPaginate
+          nextLabel={">"}
+          previousLabel={"<"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={styles.paginationList}
+          nextLinkClassName={styles.nextButton}
+          previousLinkClassName={styles.prevButton}
+          activeLinkClassName={styles.activeButton}
+          disabledLinkClassName={styles.disabledButton}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Products;
