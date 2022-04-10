@@ -6,21 +6,26 @@ import Home from "./Home";
 import Footer from "../components/Footer";
 // Components
 import Navbar from "../components/Navbar/Navbar";
+
+// Context
 import ProductsContextProvider from "../context/ProductsContextProvider";
+import CartContextProvider from "../context/CartContextProvider";
 
 const Landing = () => {
   return (
     <div>
       <ProductsContextProvider>
-        <Navbar />
-        <div>
-          <Routes>
-            <Route path="/products" element={<Products />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/*" element={<Navigate to="/home" />} />
-          </Routes>
-        </div>
+        <CartContextProvider>
+          <Navbar />
+          <div>
+            <Routes>
+              <Route path="/products" element={<Products />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Navigate to="/home" />} />
+              <Route path="/*" element={<Navigate to="/home" />} />
+            </Routes>
+          </div>
+        </CartContextProvider>
       </ProductsContextProvider>
       <Footer />
     </div>

@@ -14,14 +14,7 @@ const Products = () => {
   const displayProducts = products
     .slice(visitedProducts, visitedProducts + productsPerPage)
     .map((product) => {
-      return (
-        <Product
-          key={product.id}
-          image={product.image}
-          title={product.title}
-          price={product.price}
-        />
-      );
+      return <Product key={product.id} productData={product} />;
     });
   const pageCount = Math.ceil(products.length / productsPerPage);
   const changePage = ({ selected }) => {

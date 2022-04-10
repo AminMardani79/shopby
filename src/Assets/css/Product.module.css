@@ -28,6 +28,7 @@
 .productInfo{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 20px;
 }
 .productPrice{
@@ -35,7 +36,7 @@
     color: var(--main-black);
     font-weight: 700;
 }
-.basket button{
+.basket .addItem{
     border: 2px solid var(--main-blue);
     background-color: var(--main-white);
     color: var(--main-blue);
@@ -45,7 +46,29 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
-.basket button:hover{
+.basket .increase,
+.basket .decrease{
+    border: 2px solid var(--main-blue);
+    background-color: var(--main-white);
+    color: var(--main-blue);
+    border-radius: 5px;
+    padding: 4px 6px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    margin-left: 3px;
+}
+.basket .increase:hover,
+.basket .decrease:hover{
     background-color: var(--main-blue);
     color: var(--main-white);
+}
+.basket .addItem:hover{
+    background-color: var(--main-blue);
+    color: var(--main-white);
+}
+.productCount{
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-color);
 }

@@ -17,12 +17,7 @@ const LatestProducts = () => {
       <div className={styles.productCarousel}>
         <ProuctCarousel latestLength={latestProducts.length}>
           {latestProducts.map((item) => (
-            <Product
-              key={item.id}
-              image={item.image}
-              title={item.title}
-              price={item.price}
-            />
+            <Product key={item.id} productData={item} />
           ))}
         </ProuctCarousel>
       </div>

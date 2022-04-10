@@ -1,10 +1,13 @@
-import React from "react";
-import Image from "../../assets/img/logo.png";
+import React, { useContext } from "react";
 // styles
 import styles from "../../assets/css/Product.module.css";
 // funcitons
-import { shorten } from "../../helpers/functions";
-const Product = ({ image, title, price }) => {
+import { shorten, isInCart, getQuantity } from "../../helpers/functions";
+// Context
+import { CartContext } from "../../context/CartContextProvider";
+const Product = ({ productData }) => {
+  const { state, dispatch } = useContext(CartContext);
+  const { image, title, price, id } = productData;
   return (
     <>
       <div className={styles.productContainer}>
@@ -18,8 +21,54 @@ const Product = ({ image, title, price }) => {
         </div>
         <div className={styles.productInfo}>
           <span className={styles.productPrice}>{price} $</span>
+          {getQuantity(state, id) > 0 && (
+            <span className={styles.productCount}>
+              {getQuantity(state, id)}
+            </span>
+          )}
           <div className={styles.basket}>
-            <button>Add to basket</button>
+            {isInCart(state, id) ? (
+              <button
+                onClick={() =>
+                  dispatch({ type: "INCREASE", payload: { ...productData } })
+                }
+                className={styles.increase}
+              >
+                +
+              </button>
+            ) : (
+              <button
+                onClick={() =>
+                  dispatch({
+                    type: "ADD_ITEM",
+                    payload: { ...productData },
+                  })
+                }
+                className={styles.addItem}
+              >
+                Add to basket
+              </button>
+            )}
+            {getQuantity(state, id) === 1 && (
+              <button
+                onClick={() =>
+                  dispatch({ type: "REMOVE_ITEM", payload: { ...productData } })
+                }
+                className={styles.decrease}
+              >
+                -
+              </button>
+            )}
+            {getQuantity(state, id) > 1 && (
+              <button
+                onClick={() =>
+                  dispatch({ type: "DECREASE", payload: { ...productData } })
+                }
+                className={styles.decrease}
+              >
+                -
+              </button>
+            )}
           </div>
         </div>
       </div>

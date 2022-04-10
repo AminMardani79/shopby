@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from "react";
+import React, { createRef, useContext, useEffect, useState } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
 // Styles
 import style from "../../assets/css/Navbar.module.css";
@@ -16,8 +16,11 @@ import {
 } from "./NavbarElements";
 // image
 import logo from "../../assets/img/logo.png";
+// Context
+import { CartContext } from "../../context/CartContextProvider";
 
 const Navbar = () => {
+  const { state } = useContext(CartContext);
   // Variables
   const [isOpen, setIsOpen] = useState(false);
   const [activeStyles, setActiveStyles] = useState({
@@ -81,7 +84,7 @@ const Navbar = () => {
         <div className={style.shoppingCart}>
           <Link to="/">
             <CartIcon />
-            <span>1</span>
+            <span>{state.itemsCounter}</span>
           </Link>
         </div>
         <div className={style.enterAccount}>
