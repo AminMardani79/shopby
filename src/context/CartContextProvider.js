@@ -30,6 +30,7 @@ const cartReducer = (state, action) => {
         ...state,
         selectedItems: [...state.selectedItems],
         ...sumItems(state.selectedItems),
+        checkout: false,
       };
     case "INCREASE":
       const addedItem = state.selectedItems.find(
@@ -56,7 +57,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...newSelectedItems],
-        ...sumItems(state.selectedItems),
+        ...sumItems(newSelectedItems),
       };
     case "CHECKOUT":
       return {

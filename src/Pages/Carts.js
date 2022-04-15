@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+
+import { Link } from "react-router-dom";
 // styles
 import styles from "../assets/css/Carts.module.css";
 // components
@@ -14,11 +16,18 @@ const Carts = () => {
         <div className={styles.itemsScope}>
           <header className={styles.cartHeader}>
             <h3>Cart</h3>
-            <button type="button">Clear</button>
+            <button
+              type="button"
+              onClick={() => dispatch({ type: "CLEAR", payload: { ...state } })}
+            >
+              Clear
+            </button>
           </header>
           <div className={styles.cartItems}>
             {state.selectedItems.map((item) => {
-              return <Cart image={item.image} />;
+              return (
+                item.quantity > 0 && <Cart key={item.id} cartData={item} />
+              );
             })}
           </div>
         </div>
@@ -34,11 +43,18 @@ const Carts = () => {
           </div>
           <div className={styles.infoPrice}>
             <span>Total</span>
-            <span>90 $</span>
+            <span>{state.total} $</span>
           </div>
           <div className={styles.infoCheckout}>
-            <button>Proceed to checkout</button>
-            <button>Continue shopping</button>
+            <button
+              type="button"
+              onClick={() =>
+                dispatch({ type: "CHECKOUT", payload: { ...state } })
+              }
+            >
+              Proceed to checkout
+            </button>
+            <Link to="/products">Go Shopping</Link>
           </div>
         </div>
       </section>

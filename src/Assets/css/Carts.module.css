@@ -112,7 +112,7 @@
 .infoCheckout{
     padding-top: 15px;
 }
-.infoCheckout button:first-child{
+.infoCheckout button{
     background-color: var(--main-blue);
     border: 1px solid var(--main-blue);
     color: var(--main-white);
@@ -120,12 +120,15 @@
     border-radius: 2px;
     margin-bottom: 5px;
     cursor: pointer;
+    font-size: 13px;
 }
-.infoCheckout button:last-child{
+.infoCheckout a{
     background-color: var(--main-white);
     border: 1px solid #dcdcdc;
     padding: 5px 0;
     color: var(--text-color);
     cursor: pointer;
     border-radius: 2px;
+    text-align: center;
+    font-size: 13px;
 }
