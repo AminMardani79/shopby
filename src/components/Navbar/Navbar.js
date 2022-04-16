@@ -82,7 +82,7 @@ const Navbar = () => {
       </Nav>
       <RightNav className={style.rightNav}>
         <div className={style.shoppingCart}>
-          <Link to="/carts">
+          <Link to="/shoppingCart">
             <CartIcon />
             <span>{state.itemsCounter}</span>
           </Link>

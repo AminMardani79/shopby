@@ -1,15 +1,32 @@
-import React, { useContext } from "react";
-
+import React, { useContext, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 // styles
 import styles from "../assets/css/Carts.module.css";
 // components
-import Cart from "../components/Cart";
+import Cart from "./Cart";
 // context
 import { CartContext } from "../context/CartContextProvider";
 
+const initialState = {
+  discount: 0,
+  finalPrice: 0,
+  discountCode: "",
+};
+
+const discountReducer = (state, action) => {};
+
 const Carts = () => {
   const { state, dispatch } = useContext(CartContext);
+  const [discountState, dispatchDiscount] = useReducer(
+    discountReducer,
+    initialState
+  );
+  const [discount, setDiscount] = useState(20);
+  const [finalPrice, setFinalPrice] = useState(state.total);
+  const UseDiscount = () => {
+    const remainPercent = 100 - discount;
+    setFinalPrice((state.total * remainPercent) / 100);
+  };
   return (
     <div className={styles.CartContainer}>
       <section className={styles.itemsContainer}>
@@ -37,13 +54,15 @@ const Carts = () => {
           <div className={styles.infoDiscount}>
             <div>
               <input placeholder="discount" />
-              <button>Apply</button>
+              <button type="button" onClick={UseDiscount}>
+                Apply
+              </button>
             </div>
             <span>20% of discount</span>
           </div>
           <div className={styles.infoPrice}>
             <span>Total</span>
-            <span>{state.total} $</span>
+            <span>{finalPrice} $</span>
           </div>
           <div className={styles.infoCheckout}>
             <button

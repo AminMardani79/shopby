@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Products from "./Products";
 import Home from "./Home";
 import Footer from "../components/Footer";
-import Carts from "./Carts";
+import ShoppingCart from "./ShoppingCart";
 // Components
 import Navbar from "../components/Navbar/Navbar";
 
@@ -22,7 +22,7 @@ const Landing = () => {
             <Routes>
               <Route path="/products" element={<Products />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/carts" element={<Carts />} />
+              <Route path="/shoppingCart" element={<ShoppingCart />} />
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/*" element={<Navigate to="/home" />} />
             </Routes>
