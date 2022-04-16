@@ -19,7 +19,7 @@ const Cart = ({ cartData }) => {
       <div className={styles.cartInfo}>
         <div className={styles.cartTitle}>
           <h4>{shorten(title)}</h4>
-          <span>{price * quantity} $</span>
+          <span>{(price * quantity).toFixed(1)} $</span>
         </div>
         <div className={styles.changeState}>
           <div className={styles.changeCount}>

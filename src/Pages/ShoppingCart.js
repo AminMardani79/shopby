@@ -10,11 +10,8 @@ const ShoppingCart = () => {
   return (
     <div>
       {state.itemsCounter > 0 && !state.checkout && <Carts />}
-      {state.itemsCounter === 0 && !state.checkout ? (
-        <EmptyCart />
-      ) : (
-        <CheckoutCart />
-      )}
+      {state.itemsCounter === 0 && !state.checkout && <EmptyCart />}
+      {state.itemsCounter === 0 && state.checkout && <CheckoutCart />}
     </div>
   );
 };

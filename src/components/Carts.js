@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // styles
 import styles from "../assets/css/Carts.module.css";
@@ -6,27 +6,26 @@ import styles from "../assets/css/Carts.module.css";
 import Cart from "./Cart";
 // context
 import { CartContext } from "../context/CartContextProvider";
-
-const initialState = {
-  discount: 0,
-  finalPrice: 0,
-  discountCode: "",
-};
-
-const discountReducer = (state, action) => {};
-
 const Carts = () => {
   const { state, dispatch } = useContext(CartContext);
-  const [discountState, dispatchDiscount] = useReducer(
-    discountReducer,
-    initialState
-  );
+  const [input, setInput] = useState("");
+  const [total, setTotal] = useState(state.total);
   const [discount, setDiscount] = useState(20);
-  const [finalPrice, setFinalPrice] = useState(state.total);
-  const UseDiscount = () => {
-    const remainPercent = 100 - discount;
-    setFinalPrice((state.total * remainPercent) / 100);
+  const [discountCode, setDiscountCode] = useState("abc");
+  const remainPercent = 100 - discount;
+  let finalPrice = (state.total * remainPercent) / 100;
+  const ApplyDiscount = () => {
+    if (input === discountCode) {
+      setTotal(finalPrice);
+      setInput("");
+    }
   };
+  const changeHandler = (event) => {
+    setInput(event.target.value);
+  };
+  useEffect(() => {
+    setTotal(state.total);
+  }, [state]);
   return (
     <div className={styles.CartContainer}>
       <section className={styles.itemsContainer}>
@@ -53,8 +52,16 @@ const Carts = () => {
         <div className={styles.infoScope}>
           <div className={styles.infoDiscount}>
             <div>
-              <input placeholder="discount" />
-              <button type="button" onClick={UseDiscount}>
+              <input
+                placeholder="discount"
+                value={input}
+                onChange={changeHandler}
+              />
+              <button
+                type="button"
+                onClick={ApplyDiscount}
+                className={styles.applyDiscount}
+              >
                 Apply
               </button>
             </div>
@@ -62,7 +69,7 @@ const Carts = () => {
           </div>
           <div className={styles.infoPrice}>
             <span>Total</span>
-            <span>{finalPrice} $</span>
+            <span>{total.toFixed(2)} $</span>
           </div>
           <div className={styles.infoCheckout}>
             <button
