@@ -16,14 +16,6 @@
     color: var(--main-white) !important;
     border: 2px solid var(--main-blue);
 }
-.rec.rec-arrow:disabled:hover{
-    background-color: transparent !important;
-    border: none;
-    color: var(--main-gray) !important;
-}
-.rec-carousel{
-    width: 322px !important;
-}
 .rec-carousel-item:focus{
     outline: none;
 }
@@ -46,5 +38,10 @@
     .rec.rec-arrow{
         font-size: 17px;
         width: 30px;
+    }
+}
+@media screen and (max-width:400px) {
+    .rec-carousel{
+        width: 322px !important;
     }
 }
