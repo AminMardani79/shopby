@@ -21,6 +21,9 @@
     border: none;
     color: var(--main-gray) !important;
 }
+.rec-carousel{
+    width: 322px !important;
+}
 .rec-carousel-item:focus{
     outline: none;
 }

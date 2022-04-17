@@ -6,6 +6,8 @@ import Product from "../components/shared/Product";
 import ReactPaginate from "react-paginate";
 // Contexts
 import { ProductContext } from "../context/ProductsContextProvider";
+// images
+import loading from "../assets/img/loading.svg";
 const Products = () => {
   const products = useContext(ProductContext);
   const [pageNumber, setPageNumber] = useState(0);
@@ -22,20 +24,28 @@ const Products = () => {
   };
   return (
     <div>
-      <div className={styles.productsContainer}>{displayProducts}</div>
-      <div className={styles.paginationContainer}>
-        <ReactPaginate
-          nextLabel={">"}
-          previousLabel={"<"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={styles.paginationList}
-          nextLinkClassName={styles.nextButton}
-          previousLinkClassName={styles.prevButton}
-          activeLinkClassName={styles.activeButton}
-          disabledLinkClassName={styles.disabledButton}
-        />
-      </div>
+      {products.length > 0 ? (
+        <div>
+          <div className={styles.productsContainer}>{displayProducts}</div>
+          <div className={styles.paginationContainer}>
+            <ReactPaginate
+              nextLabel={">"}
+              previousLabel={"<"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={styles.paginationList}
+              nextLinkClassName={styles.nextButton}
+              previousLinkClassName={styles.prevButton}
+              activeLinkClassName={styles.activeButton}
+              disabledLinkClassName={styles.disabledButton}
+            />
+          </div>
+        </div>
+      ) : (
+        <div className={styles.loading}>
+          <img src={loading} alt="loading" />
+        </div>
+      )}
     </div>
   );
 };

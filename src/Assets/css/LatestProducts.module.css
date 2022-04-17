@@ -13,6 +13,13 @@
   height: 400px;
   margin: auto;
 }
+.sliderLoading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  margin-top: 20px;
+}
 @media screen and (max-width:650px) {
   .latestTitle h3{
     font-size: 28px;

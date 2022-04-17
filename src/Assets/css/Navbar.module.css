@@ -31,7 +31,7 @@
   color: var(--main-white);
   padding: 2px 5px;
   border-radius: 50%;
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .rightNav > .enterAccount a {

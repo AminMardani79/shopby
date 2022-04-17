@@ -45,6 +45,12 @@
     background-color: var(--main-white) !important;
     color:var(--main-blue) !important;
 }
+.loading{
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media screen and (max-width:992px) {
     .productsContainer{
         grid-template-columns: repeat(3,auto);
