@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 // styles
 import styles from "../../assets/css/Product.module.css";
 // funcitons
@@ -12,12 +13,12 @@ const Product = ({ productData }) => {
     <>
       <div className={styles.productContainer}>
         <div className={styles.productImage}>
-          <a href="#">
+          <Link to={`/productDetails/${id}`}>
             <img src={image} alt="product" />
-          </a>
+          </Link>
         </div>
         <div className={styles.productName}>
-          <a href="#">{shorten(title)}</a>
+          <Link to={`/productDetails/${id}`}>{shorten(title)}</Link>
         </div>
         <div className={styles.productInfo}>
           <span className={styles.productPrice}>{price} $</span>
