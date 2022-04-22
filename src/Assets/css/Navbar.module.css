@@ -1,11 +1,15 @@
 @import "index.css";
+header{
+  position: fixed;
+  top: 0;
+  background-color: var(--main-white);
+}
 .navbarMenu {
   position: relative;
   text-align: center;
 }
 .navbarMenu .active {
   color: var(--main-black);
-  /* border-bottom: 2px solid var(--main-blue); */
   transition: none;
 }
 .navbarMenu a {

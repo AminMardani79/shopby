@@ -4,10 +4,9 @@ import styles from "../assets/css/Products.module.css";
 // components
 import Product from "../components/shared/Product";
 import ReactPaginate from "react-paginate";
+import Loading from "../components/shared/Loading";
 // Contexts
 import { ProductContext } from "../context/ProductsContextProvider";
-// images
-import loading from "../assets/img/loading.svg";
 const Products = () => {
   const products = useContext(ProductContext);
   const [pageNumber, setPageNumber] = useState(0);
@@ -42,9 +41,7 @@ const Products = () => {
           </div>
         </div>
       ) : (
-        <div className={styles.loading}>
-          <img src={loading} alt="loading" />
-        </div>
+        <Loading />
       )}
     </div>
   );

@@ -7,18 +7,23 @@ import { DeleteIcon } from "./CartElements";
 import { CartContext } from "../context/CartContextProvider";
 // functions
 import { shorten } from "../helpers/functions";
+import { Link } from "react-router-dom";
 
 const Cart = ({ cartData }) => {
   const { dispatch } = useContext(CartContext);
-  const { title, image, price, quantity } = cartData;
+  const { id, title, image, price, quantity } = cartData;
   return (
     <section className={styles.cartItemContainer}>
       <div className={styles.cartImage}>
-        <img src={image} alt="cartimage" />
+        <Link to={`/productDetails/${id}`}>
+          <img src={image} alt="cartimage" />
+        </Link>
       </div>
       <div className={styles.cartInfo}>
         <div className={styles.cartTitle}>
-          <h4>{shorten(title)}</h4>
+          <Link to={`/productDetails/${id}`}>
+            <h4>{shorten(title)}</h4>
+          </Link>
           <span>{(price * quantity).toFixed(1)} $</span>
         </div>
         <div className={styles.changeState}>
