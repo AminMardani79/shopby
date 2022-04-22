@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    margin-top: 60px;
 }
 .emptyImage{
     width: 400px;

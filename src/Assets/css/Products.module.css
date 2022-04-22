@@ -6,6 +6,7 @@
     padding: 0 5vw 25px 5vw;
     justify-content: center;
     align-items: center;
+    margin-top: 90px;
 }
 .paginationContainer{
     display: flex;

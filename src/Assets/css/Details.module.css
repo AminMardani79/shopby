@@ -5,6 +5,7 @@
     grid-template-columns: 60% 1fr;
     padding: 50px 80px;
     justify-content: center;
+    margin-top: 80px;
 }
 .detailsImage{
     display: flex;

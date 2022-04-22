@@ -7,6 +7,7 @@
     grid-template-columns: 65% 1fr;
     gap: 20px;
     background-color: #e8e8e8;
+    margin-top: 60px;
 }
 .itemsContainer{
     position: relative;

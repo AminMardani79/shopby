@@ -1,9 +1,4 @@
 @import "index.css";
-header{
-  position: fixed;
-  top: 0;
-  background-color: var(--main-white);
-}
 .navbarMenu {
   position: relative;
   text-align: center;

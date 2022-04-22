@@ -22,6 +22,7 @@ import { CartContext } from "../../context/CartContextProvider";
 const Navbar = () => {
   const { state } = useContext(CartContext);
   // Variables
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [activeStyles, setActiveStyles] = useState({
     width: "36px",
@@ -58,10 +59,20 @@ const Navbar = () => {
         break;
     }
   }, [params]);
+  const handleScroll = () => {
+    const topPosition = window.scrollY;
+    setScrollPosition(topPosition);
+  };
+  useEffect(() => {
+    window.onscroll = handleScroll;
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <Header>
+    <Header topScroll={scrollPosition}>
       <div className={style.logoContainer}>
-        <img src={logo} alt="logo" />
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
       </div>
       <Nav className={style.navbarMenu}>
         <NavLink

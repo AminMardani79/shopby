@@ -1,5 +1,6 @@
 .mainContainer {
   padding: 0 5vw;
+  margin-top: 30px;
 }
 @media screen and (max-width: 768px) {
   .mainContainer {

@@ -17,6 +17,13 @@ export const Header = styled.div`
   align-items: center;
   width: 100%;
   padding: 25px 40px;
+  transition: all 0.2s ease-out;
+  position: fixed;
+  top: 0;
+  box-shadow: ${(props) => (props.topScroll > 0 ? "0 0 10px #a6a8b2" : "")};
+  padding: ${(props) => (props.topScroll > 0 ? "12px 40px" : "25px 40px")};
+  background-color: #fff;
+  z-index: 20;
   @media screen and (max-width: 768px) {
     padding: 20px 20px;
   }
