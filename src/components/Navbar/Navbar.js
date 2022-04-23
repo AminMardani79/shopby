@@ -13,6 +13,8 @@ import {
   Hamburger,
   Overlay,
   ActiveSpan,
+  ScrollTop,
+  ArrowUp,
 } from "./NavbarElements";
 // image
 import logo from "../../assets/img/logo.png";
@@ -38,6 +40,12 @@ const Navbar = () => {
   };
   const CloseMenu = () => {
     setIsOpen(false);
+  };
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
   useEffect(() => {
     switch (params["*"]) {
@@ -130,6 +138,9 @@ const Navbar = () => {
         </HamburgerMenu>
         <Overlay onClick={CloseMenu} isFade={isOpen}></Overlay>
       </HamburgerItems>
+      <ScrollTop onClick={scrollTop} topScroll={scrollPosition}>
+        <ArrowUp />
+      </ScrollTop>
     </Header>
   );
 };

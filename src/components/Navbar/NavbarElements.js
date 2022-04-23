@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Icons
-import { MdShoppingCart, MdReorder } from "react-icons/md";
+import { MdShoppingCart, MdReorder, MdArrowUpward } from "react-icons/md";
 
 export const CartIcon = styled(MdShoppingCart)`
   color: #292a2f;
@@ -109,4 +109,26 @@ export const ActiveSpan = styled.span`
   height: 2px;
   background-color: var(--main-blue);
   transition: all 0.1s ease-in-out;
+`;
+
+export const ScrollTop = styled.button`
+  position: fixed;
+  bottom: 45px;
+  right: 45px;
+  padding: 10px 12px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px #3b71ff;
+  opacity: ${(props) => (props.topScroll > 100 ? "1" : "0")};
+  visibility: ${(props) => (props.topScroll > 100 ? "visible" : "hidden")};
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+`;
+export const ArrowUp = styled(MdArrowUpward)`
+  font-size: 20px;
+  color: #3b71ff;
 `;

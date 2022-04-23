@@ -24,7 +24,7 @@ const Cart = ({ cartData }) => {
           <Link to={`/productDetails/${id}`}>
             <h4>{shorten(title)}</h4>
           </Link>
-          <span>{(price * quantity).toFixed(1)} $</span>
+          <span>{(price * quantity).toFixed(2)} $</span>
         </div>
         <div className={styles.changeState}>
           <div className={styles.changeCount}>

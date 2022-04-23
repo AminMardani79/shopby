@@ -28,7 +28,17 @@
     margin: 0 3px;
     transition: all .2s ease-in-out;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+}
+.paginationList li:last-child a,
+.paginationList li:first-child a{
+    padding: 1px 6px;
+    font-size: 15px;
+    font-weight: 900;
 }
 .paginationList li a:hover{
     background-color: var(--main-blue);
@@ -49,6 +59,9 @@
 @media screen and (max-width:992px) {
     .productsContainer{
         grid-template-columns: repeat(3,auto);
+    }
+    .paginationContainer{
+        padding-top: 15px;
     }
 }
 @media screen and (max-width: 768px) {

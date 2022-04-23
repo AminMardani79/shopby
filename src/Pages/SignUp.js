@@ -3,8 +3,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../helpers/notify";
 import { validate } from "../helpers/validate";
-import styles from "../assets/css/SignUp.module.css";
 import { Link } from "react-router-dom";
+// styles
+import styles from "../assets/css/SignUp.module.css";
+// icons
+import { MdHome } from "react-icons/md";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -163,6 +166,9 @@ const SignUp = () => {
         </div>
         <div className={styles.formButtons}>
           <Link to="/login">Login</Link>
+          <Link to="/">
+            <MdHome className={styles.homeIcon} />
+          </Link>
           <button type="submit">SignUp</button>
         </div>
       </form>

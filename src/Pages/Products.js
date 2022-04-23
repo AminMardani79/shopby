@@ -7,6 +7,8 @@ import ReactPaginate from "react-paginate";
 import Loading from "../components/shared/Loading";
 // Contexts
 import { ProductContext } from "../context/ProductsContextProvider";
+// icons
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 const Products = () => {
   const products = useContext(ProductContext);
   const [pageNumber, setPageNumber] = useState(0);
@@ -28,8 +30,8 @@ const Products = () => {
           <div className={styles.productsContainer}>{displayProducts}</div>
           <div className={styles.paginationContainer}>
             <ReactPaginate
-              nextLabel={">"}
-              previousLabel={"<"}
+              nextLabel={<MdKeyboardArrowRight />}
+              previousLabel={<MdKeyboardArrowLeft />}
               pageCount={pageCount}
               onPageChange={changePage}
               containerClassName={styles.paginationList}
